@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:task_management_app/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -11,7 +12,9 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: Colors.blue[100],
       body: Container(
-        margin: EdgeInsets.all(Get.height * 0.1),
+        margin: !context.isPhone
+            ? EdgeInsets.all(Get.height * 0.1)
+            : EdgeInsets.all(Get.width * 0.1),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50), color: Colors.white),
         child: Row(
@@ -60,12 +63,35 @@ class LoginView extends GetView<LoginController> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  !context.isPhone
+                      ? Column(
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              "Welcome",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 40),
+                            ),
+                            Text(
+                              "Please Sign In",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 20),
+                            ),
+                            Text(
+                              "Start Journey With Us",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 15),
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
                   Image.asset(
                     'assets/Images/login.png',
                     height: Get.height * 0.5,
                   ),
                   FloatingActionButton.extended(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(Routes.HOME),
                     label: const Text('Sign In with Google'),
                     icon: const Icon(
                       Ionicons.logo_google,
