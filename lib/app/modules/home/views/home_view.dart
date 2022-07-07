@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:task_management_app/app/Utils/styles/AppColors.dart';
+import 'package:task_management_app/app/Utils/widgets/myfriends.dart';
 import 'package:task_management_app/app/Utils/widgets/upcomingtask.dart';
 import 'package:task_management_app/app/routes/app_pages.dart';
 
@@ -101,7 +102,7 @@ class HomeView extends GetView<HomeController> {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: !context.isPhone
-                            ? BorderRadius.circular(30)
+                            ? BorderRadius.circular(50)
                             : BorderRadius.circular(30),
                       ),
                       child: Column(
@@ -119,7 +120,7 @@ class HomeView extends GetView<HomeController> {
                                       fontSize: 25),
                                 ),
                                 const SizedBox(
-                                  height: 20,
+                                  height: 15,
                                 ),
                                 // My task
                                 SizedBox(
@@ -471,42 +472,16 @@ class HomeView extends GetView<HomeController> {
                               ],
                             ),
                           ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                const UpcomingTask(),
-                                Expanded(
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: const [
-                                          Text(
-                                            'My Friends',
-                                            style: TextStyle(
-                                                color: AppColors.primaryText,
-                                                fontSize: 25),
-                                          ),
-                                          Text(
-                                            'More',
-                                            style: TextStyle(
-                                                color: AppColors.primaryText,
-                                                fontSize: 25),
-                                          ),
-                                          Icon(
-                                            Ionicons.arrow_forward,
-                                            color: AppColors.primaryText,
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
+                          !context.isPhone
+                              ? Expanded(
+                                  child: Row(
+                                    children: const [
+                                      UpcomingTask(),
+                                      MyFriend(),
                                     ],
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                )
+                              : const UpcomingTask(),
                         ],
                       ),
                       // content / isi page / screen

@@ -24,35 +24,30 @@ class AppPages {
       page: () => HomeView(),
       binding: HomeBinding(),
       transition: Transition.upToDown,
-      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
       transition: Transition.native,
-      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: _Paths.FRIENDS,
       page: () => FriendsView(),
       binding: FriendsBinding(),
       transition: Transition.upToDown,
-      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: _Paths.TASK,
       page: () => TaskView(),
       binding: TaskBinding(),
       transition: Transition.upToDown,
-      transitionDuration: Duration(seconds: 1),
     ),
     GetPage(
       name: _Paths.PROFILE,
       page: () => ProfileView(),
       binding: ProfileBinding(),
       transition: Transition.upToDown,
-      transitionDuration: Duration(seconds: 1),
     ),
   ];
 }

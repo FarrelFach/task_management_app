@@ -21,7 +21,7 @@ class UpcomingTask extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             SizedBox(
               height: 400,
