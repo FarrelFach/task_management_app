@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:task_management_app/app/Utils/styles/AppColors.dart';
 import 'package:task_management_app/app/routes/app_pages.dart';
 
 class header extends StatelessWidget {
@@ -13,7 +14,7 @@ class header extends StatelessWidget {
     return SizedBox(
       height: Get.height * 0.1,
       child: Padding(
-        padding: const EdgeInsets.only(left: 40, right: 40, top: 10),
+        padding: const EdgeInsets.only(left: 40, right: 40, top: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -24,14 +25,14 @@ class header extends StatelessWidget {
                   'Task Management',
                   style: TextStyle(
                     fontSize: 25,
-                    color: Colors.grey,
+                    color: AppColors.primaryText,
                   ),
                 ),
                 Text(
                   'Manage task easy with friends',
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.grey,
+                    color: AppColors.primaryText,
                   ),
                 ),
               ],
@@ -52,7 +53,7 @@ class header extends StatelessWidget {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.blue),
+                    borderSide: const BorderSide(color: AppColors.primaryBg),
                   ),
                   prefixIcon: const Icon(
                     Icons.search,
@@ -67,7 +68,8 @@ class header extends StatelessWidget {
             ),
             const Icon(
               Ionicons.notifications,
-              color: Colors.grey,
+              color: AppColors.primaryText,
+              size: 30,
             ),
             const SizedBox(
               width: 20,
@@ -92,7 +94,8 @@ class header extends StatelessWidget {
                   Text(
                     'Sign Out',
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: AppColors.primaryText,
+                      fontSize: 18,
                     ),
                   ),
                   SizedBox(
@@ -103,7 +106,8 @@ class header extends StatelessWidget {
             ),
             const Icon(
               Ionicons.log_out_outline,
-              color: Colors.grey,
+              color: AppColors.primaryText,
+              size: 30,
             ),
           ],
         ),
