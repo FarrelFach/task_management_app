@@ -81,7 +81,7 @@ class TaskView extends GetView<TaskController> {
                                 backgroundColor: Colors.amber,
                                 radius: 25,
                                 foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg'),
+                                    'https://i.imgur.com/APmrQQB.jpeg'),
                               ),
                             ),
                           ],

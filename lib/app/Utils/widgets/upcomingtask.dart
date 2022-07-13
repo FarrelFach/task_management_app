@@ -49,7 +49,7 @@ class UpcomingTask extends StatelessWidget {
                                 backgroundColor: Colors.amber,
                                 radius: 20,
                                 foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg'),
+                                    'https://i.imgur.com/APmrQQB.jpeg'),
                               ),
                             ),
                             ClipRRect(
@@ -58,7 +58,7 @@ class UpcomingTask extends StatelessWidget {
                                 backgroundColor: Colors.amber,
                                 radius: 20,
                                 foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg'),
+                                    'https://i.imgur.com/APmrQQB.jpeg'),
                               ),
                             ),
                             const Spacer(),
@@ -123,7 +123,7 @@ class UpcomingTask extends StatelessWidget {
                                 backgroundColor: Colors.amber,
                                 radius: 20,
                                 foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg'),
+                                    'https://i.imgur.com/APmrQQB.jpeg'),
                               ),
                             ),
                             ClipRRect(
@@ -132,7 +132,7 @@ class UpcomingTask extends StatelessWidget {
                                 backgroundColor: Colors.amber,
                                 radius: 20,
                                 foregroundImage: NetworkImage(
-                                    'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg'),
+                                    'https://i.imgur.com/APmrQQB.jpeg'),
                               ),
                             ),
                             const Spacer(),

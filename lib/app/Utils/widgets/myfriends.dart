@@ -64,7 +64,7 @@ class MyFriend extends StatelessWidget {
                           ),
                           const Spacer(),
                           const Text(
-                            'Daffi Fadillah',
+                            'Daffi Fadillah Terimakasih',
                             style: TextStyle(color: AppColors.primaryText),
                           ),
                         ],
