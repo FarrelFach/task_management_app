@@ -47,25 +47,25 @@ class MyFriend extends StatelessWidget {
                 child: GridView.builder(
                     shrinkWrap: true,
                     itemCount: 8,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 20,
-                            mainAxisSpacing: 40),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: context.isPhone ? 2 : 3,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 40),
                     itemBuilder: (context, index) {
                       return Column(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(50),
                             child: const Image(
                                 image: NetworkImage(
                                     'https://pbs.twimg.com/profile_images/1539609458514358272/VeuA18MI_400x400.jpg',
                                     scale: 3)),
                           ),
-                          const Spacer(),
                           const Text(
                             'Daffi Fadillah Terimakasih',
-                            style: TextStyle(color: AppColors.primaryText),
+                            style: TextStyle(
+                              color: AppColors.primaryText,
+                            ),
                           ),
                         ],
                       );
