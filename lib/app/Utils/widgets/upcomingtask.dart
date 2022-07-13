@@ -97,7 +97,7 @@ class UpcomingTask extends StatelessWidget {
                               color: AppColors.primaryText, fontSize: 20),
                         ),
                         const Text(
-                          'Deadline 2 hari lagi',
+                          'Deadline hari ini',
                           style: TextStyle(
                               color: AppColors.primaryText, fontSize: 15),
                         )
@@ -171,7 +171,7 @@ class UpcomingTask extends StatelessWidget {
                               color: AppColors.primaryText, fontSize: 20),
                         ),
                         const Text(
-                          'Deadline 2 hari lagi',
+                          'Deadline hari ini',
                           style: TextStyle(
                               color: AppColors.primaryText, fontSize: 15),
                         )
