@@ -10,6 +10,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/task/bindings/task_binding.dart';
 import '../modules/task/views/task_view.dart';
+import '../modules/uji/bindings/uji_binding.dart';
+import '../modules/uji/views/uji_view.dart';
 
 part 'app_routes.dart';
 
@@ -48,6 +50,11 @@ class AppPages {
       page: () => ProfileView(),
       binding: ProfileBinding(),
       transition: Transition.upToDown,
+    ),
+    GetPage(
+      name: _Paths.UJI,
+      page: () => UjiView(),
+      binding: UjiBinding(),
     ),
   ];
 }
