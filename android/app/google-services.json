@@ -37,6 +37,13 @@
             {
               "client_id": "481957066360-p89jkb4mnsq0iuf55ojmvu4rdo1bttfc.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "481957066360-lckpn6f31o38h3mobmn4an81o8ccmn39.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.taskManagementApp"
+              }
             }
           ]
         }

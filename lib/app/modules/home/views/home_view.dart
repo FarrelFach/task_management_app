@@ -18,7 +18,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      drawer: const Sidebar(),
+      drawer: SizedBox(width: 150, child: const Sidebar()),
       backgroundColor: AppColors.primaryBg,
       body: SafeArea(
         child: Row(
