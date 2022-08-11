@@ -122,83 +122,88 @@ class TaskView extends GetView<TaskController> {
                               shrinkWrap: true,
                               itemCount: 8,
                               itemBuilder: (context, index) {
-                                return Container(
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: AppColors.cardBg,
-                                  ),
-                                  margin: const EdgeInsets.all(10),
-                                  padding: const EdgeInsets.all(20),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            child: const CircleAvatar(
-                                              backgroundColor: Colors.amber,
-                                              radius: 20,
-                                              foregroundImage: NetworkImage(
-                                                  'https://i.imgur.com/APmrQQB.jpeg'),
+                                return GestureDetector(
+                                  onLongPress: () {
+                                    addEditTask(context: context, type: 'Update', docId:);
+                                  }, 
+                                  child: Container(
+                                    height: 200,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColors.cardBg,
+                                    ),
+                                    margin: const EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(20),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              child: const CircleAvatar(
+                                                backgroundColor: Colors.amber,
+                                                radius: 20,
+                                                foregroundImage: NetworkImage(
+                                                    'https://i.imgur.com/APmrQQB.jpeg'),
+                                              ),
                                             ),
-                                          ),
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(25),
-                                            child: const CircleAvatar(
-                                              backgroundColor: Colors.amber,
-                                              radius: 20,
-                                              foregroundImage: NetworkImage(
-                                                  'https://i.imgur.com/APmrQQB.jpeg'),
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                              child: const CircleAvatar(
+                                                backgroundColor: Colors.amber,
+                                                radius: 20,
+                                                foregroundImage: NetworkImage(
+                                                    'https://i.imgur.com/APmrQQB.jpeg'),
+                                              ),
                                             ),
-                                          ),
-                                          const Spacer(),
-                                          Container(
-                                            height: 25,
-                                            width: 80,
-                                            color: AppColors.primaryBg,
-                                            child: const Center(
-                                              child: Text(
-                                                '100 %',
-                                                style: TextStyle(
-                                                  color: AppColors.primaryText,
+                                            const Spacer(),
+                                            Container(
+                                              height: 25,
+                                              width: 80,
+                                              color: AppColors.primaryBg,
+                                              child: const Center(
+                                                child: Text(
+                                                  '100 %',
+                                                  style: TextStyle(
+                                                    color: AppColors.primaryText,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      const Spacer(),
-                                      Container(
-                                        height: 25,
-                                        width: 80,
-                                        color: AppColors.primaryBg,
-                                        child: const Center(
-                                          child: Text(
-                                            '10 / 10 Task',
-                                            style: TextStyle(
-                                              color: AppColors.primaryText,
+                                          ],
+                                        ),
+                                        const Spacer(),
+                                        Container(
+                                          height: 25,
+                                          width: 80,
+                                          color: AppColors.primaryBg,
+                                          child: const Center(
+                                            child: Text(
+                                              '10 / 10 Task',
+                                              style: TextStyle(
+                                                color: AppColors.primaryText,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      const Text(
-                                        'Pemrograman Mobile',
-                                        style: TextStyle(
-                                            color: AppColors.primaryText,
-                                            fontSize: 20),
-                                      ),
-                                      const Text(
-                                        'Deadline hari ini',
-                                        style: TextStyle(
-                                            color: AppColors.primaryText,
-                                            fontSize: 15),
-                                      )
-                                    ],
+                                        const Text(
+                                          'Pemrograman Mobile',
+                                          style: TextStyle(
+                                              color: AppColors.primaryText,
+                                              fontSize: 20),
+                                        ),
+                                        const Text(
+                                          'Deadline hari ini',
+                                          style: TextStyle(
+                                              color: AppColors.primaryText,
+                                              fontSize: 15),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 );
                               },
@@ -327,11 +332,11 @@ class TaskView extends GetView<TaskController> {
                   child: ElevatedButton(
                     onPressed: () {
                       controller.saveUpdateTask(
-                        type.toString(),
                         controller.titleController.text,
                         controller.descriptionController.text,
                         controller.dueDateController.text,
-                        docId.toString(),
+                        docId!,
+                        type!
                       );
                     },
                     child: Text(type!),
