@@ -6,6 +6,7 @@ import 'package:task_management_app/app/Utils/styles/AppColors.dart';
 import 'package:task_management_app/app/Utils/widgets/MyTask.dart';
 import 'package:task_management_app/app/Utils/widgets/Profile.dart';
 import 'package:task_management_app/app/Utils/widgets/header.dart';
+import 'package:task_management_app/app/Utils/widgets/peopleYouMayKnow.dart';
 import 'package:task_management_app/app/Utils/widgets/sidebar.dart';
 import 'package:task_management_app/app/data/controller/auth.controller.dart';
 import 'package:task_management_app/app/routes/app_pages.dart';
@@ -14,12 +15,12 @@ import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
-  final authC = Get.find<AuthController>();
+  final authConn = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      drawer: SizedBox(width: 150, child: const Sidebar()),
+      drawer: const SizedBox(width: 150, child: Sidebar()),
       backgroundColor: AppColors.primaryBg,
       body: SafeArea(
         child: Row(
@@ -91,7 +92,7 @@ class ProfileView extends GetView<ProfileController> {
                                       child: const Text('Cancel'),
                                     ),
                                     confirm: ElevatedButton(
-                                      onPressed: () => authC.logout(),
+                                      onPressed: () => authConn.logout(),
                                       child: const Text('Sign Out'),
                                     ),
                                   );
@@ -132,20 +133,20 @@ class ProfileView extends GetView<ProfileController> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children:[
                           Profile(),
                           // SizedBox(height: 20),
-                          Text(
-                            'My Task',
+                          const Text(
+                            'People You May Know',
                             style: TextStyle(
                                 color: AppColors.primaryText, fontSize: 25),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           SizedBox(
                             height: 200,
-                            child: MyTask(),
+                            child: PeopleYouMayKnow(),
                           ),
                         ],
                       ),

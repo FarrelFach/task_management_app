@@ -5,7 +5,9 @@ import 'package:ionicons/ionicons.dart';
 import 'package:task_management_app/app/Utils/styles/AppColors.dart';
 import 'package:task_management_app/app/Utils/widgets/MyTask.dart';
 import 'package:task_management_app/app/Utils/widgets/myfriends.dart';
+import 'package:task_management_app/app/Utils/widgets/peopleYouMayKnow.dart';
 import 'package:task_management_app/app/Utils/widgets/upcomingtask.dart';
+import 'package:task_management_app/app/data/controller/auth.controller.dart';
 import 'package:task_management_app/app/routes/app_pages.dart';
 
 import '../../../Utils/widgets/header.dart';
@@ -14,11 +16,12 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  final authCon = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      drawer: SizedBox(width: 150, child: const Sidebar()),
+      drawer: const SizedBox(width: 150, child: Sidebar()),
       backgroundColor: AppColors.primaryBg,
       body: SafeArea(
         child: Row(
@@ -81,11 +84,11 @@ class HomeView extends GetView<HomeController> {
                               ),
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(30),
-                                child: const CircleAvatar(
+                                child: CircleAvatar(
                                   backgroundColor: Colors.amber,
                                   radius: 25,
-                                  foregroundImage:
-                                      AssetImage('assets\Images\profile.png'),
+                                  foregroundImage: NetworkImage(
+                                      authCon.auth.currentUser!.photoURL!),
                                 ),
                               ),
                             ],
@@ -113,31 +116,30 @@ class HomeView extends GetView<HomeController> {
                             height: Get.height * 0.4,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  'My Task',
+                              children: [
+                                const Text(
+                                  'People You May Know',
                                   style: TextStyle(
                                       color: AppColors.primaryText,
                                       fontSize: 25),
                                 ),
-                                SizedBox(
-                                  height: 15,
-                                ),
                                 // My task
-                                MyTask(),
+                                PeopleYouMayKnow(),
                               ],
                             ),
                           ),
                           !context.isPhone
                               ? Expanded(
                                   child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      UpcomingTask(),
+                                      MyTask(),
                                       MyFriend(),
                                     ],
                                   ),
                                 )
-                              : const UpcomingTask(),
+                              : MyTask(),
                         ],
                       ),
                       // content / isi page / screen
