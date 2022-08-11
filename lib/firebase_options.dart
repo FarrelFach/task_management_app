@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -65,6 +62,17 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBPiayUJZlK8VOOU2-eqLXznfQFT-IEcYg',
+    appId: '1:481957066360:ios:036bd55f3c3ff5308c5f8d',
+    messagingSenderId: '481957066360',
+    projectId: 'task-management-app-f2c8a',
+    storageBucket: 'task-management-app-f2c8a.appspot.com',
+    androidClientId: '481957066360-cgqsi6cts63t3kn4le0rbiecaulnok7g.apps.googleusercontent.com',
+    iosClientId: '481957066360-lckpn6f31o38h3mobmn4an81o8ccmn39.apps.googleusercontent.com',
+    iosBundleId: 'com.example.taskManagementApp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyBPiayUJZlK8VOOU2-eqLXznfQFT-IEcYg',
     appId: '1:481957066360:ios:036bd55f3c3ff5308c5f8d',
     messagingSenderId: '481957066360',

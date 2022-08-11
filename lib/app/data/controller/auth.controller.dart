@@ -150,7 +150,7 @@ class AuthController extends GetxController {
   }
 
   Stream<DocumentSnapshot<Map<String, dynamic>>> streamUsers(String email) {
-    return firestore.collection('friends').doc(email).snapshots();
+    return firestore.collection('users').doc(email).snapshots();
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getPeople() async {
@@ -163,5 +163,9 @@ class AuthController extends GetxController {
         .where('email', whereNotIn: listFriends)
         .get();
     return hasil;
+  }
+
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamTask(String taskId) {
+    return firestore.collection('task').doc(taskId).snapshots();
   }
 }
