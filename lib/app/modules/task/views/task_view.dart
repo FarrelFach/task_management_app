@@ -1,3 +1,4 @@
+import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -15,7 +16,7 @@ class TaskView extends GetView<TaskController> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _drawerKey,
-      drawer: SizedBox(width: 150, child: const Sidebar()),
+      drawer: const SizedBox(width: 150, child: Sidebar()),
       backgroundColor: AppColors.primaryBg,
       body: SafeArea(
         child: Row(
@@ -106,7 +107,7 @@ class TaskView extends GetView<TaskController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'My Task',
                             style: TextStyle(
                                 color: AppColors.primaryText, fontSize: 25),
@@ -214,24 +215,134 @@ class TaskView extends GetView<TaskController> {
         ),
       ),
       floatingActionButton: Align(
-        alignment: Alignment(0.95, 0.95),
+        alignment: const Alignment(0.95, 0.95),
         child: FloatingActionButton.extended(
           onPressed: () {
-            Get.bottomSheet(Container(
-              margin: context.isPhone
-                  ? EdgeInsets.zero
-                  : EdgeInsets.only(left: 150, right: 150),
-              height: Get.height,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    topLeft: Radius.circular(20)),
-                color: Colors.white,
-              ),
-            ));
+            addEditTask(
+              context: context,
+              type: 'Add',
+              docId: '',
+            );
           },
-          label: Text("Add Task"),
-          icon: Icon(Ionicons.add_circle_outline),
+          label: const Text("Add Task"),
+          icon: const Icon(Ionicons.add_circle_outline),
+        ),
+      ),
+    );
+  }
+
+  addEditTask({BuildContext? context, String? type, String? docId}) {
+    Get.bottomSheet(
+      SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.only(top: 5, left: 10, right: 10),
+          margin: context!.isPhone
+              ? EdgeInsets.zero
+              : const EdgeInsets.only(left: 150, right: 150),
+          height: Get.height,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+            color: Colors.white,
+          ),
+          child: Form(
+            key: controller.formkey,
+            child: Column(
+              children: [
+                Text(
+                  '$type Task',
+                  style: const TextStyle(
+                    color: AppColors.primaryText,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    hintText: 'title',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  controller: controller.titleController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Cannot be empty';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    hintText: 'Description',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  controller: controller.descriptionController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Cannot be empty';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                DateTimePicker(
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime(2100),
+                  dateLabelText: 'Due Date',
+                  decoration: InputDecoration(
+                    hintText: 'Due Date',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  controller: controller.dueDateController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Cannot be empty';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ConstrainedBox(
+                  constraints: BoxConstraints.tightFor(
+                    width: Get.width,
+                    height: 40,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.saveUpdateTask(
+                        type.toString(),
+                        controller.titleController.text,
+                        controller.descriptionController.text,
+                        controller.dueDateController.text,
+                        docId.toString(),
+                      );
+                    },
+                    child: Text(type!),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
